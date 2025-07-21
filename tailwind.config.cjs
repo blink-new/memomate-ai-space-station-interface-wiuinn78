@@ -8,6 +8,11 @@ module.exports = {
   theme: {
   	extend: {
   		colors: {
+  			// Space Station Theme Colors
+  			'space-black': '#0a0a0a',
+  			'space-red': '#ff003c',
+  			'space-cyan': '#00ffe0',
+  			'space-panel': '#242424',
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
@@ -83,8 +88,13 @@ module.exports = {
   		},
   		fontFamily: {
   			sans: [
+  				'Exo 2',
   				'Inter var',
   				'sans-serif'
+  			],
+  			orbitron: [
+  				'Orbitron',
+  				'monospace'
   			]
   		},
   		animation: {

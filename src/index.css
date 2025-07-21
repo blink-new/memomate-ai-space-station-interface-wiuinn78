@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    /* Space Station Color Palette */
+    --space-black: 10 10% 4%;
+    --space-red: 0 100% 50%;
+    --space-cyan: 180 100% 50%;
+    --space-panel: 0 0% 14%;
+    
+    /* Default theme variables */
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
@@ -28,8 +37,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
-  ;
+    --radius: 0.5rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -37,7 +45,8 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%}
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
 
   .dark {
     --background: 240 10% 3.9%;
@@ -63,8 +72,7 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
-  ;
+    --chart-5: 340 75% 55%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -72,7 +80,8 @@
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%}
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
 }
 
 @layer base {
@@ -82,5 +91,142 @@
 
   body {
     @apply bg-background text-foreground;
+
+    font-family: 'Exo 2', sans-serif;
+  }
+}
+
+@layer components {
+  /* Space Station Typography */
+  .font-orbitron {
+    font-family: Orbitron, monospace;
+  }
+  
+  .exo {
+    font-family: 'Exo 2', sans-serif;
+  }
+
+  /* Neon Effects */
+  .neon-red {
+    color: #ff003c;
+    text-shadow: 0 0 5px #ff003c, 0 0 10px #ff003c, 0 0 15px #ff003c;
+  }
+
+  .neon-cyan {
+    color: #00ffe0;
+    text-shadow: 0 0 5px #00ffe0, 0 0 10px #00ffe0, 0 0 15px #00ffe0;
+  }
+
+  /* Glass Morphism */
+  .glass-panel {
+    background: rgb(255 255 255 / 5%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgb(255 255 255 / 10%);
+    box-shadow: 
+      0 8px 32px rgb(0 0 0 / 30%),
+      inset 0 1px 0 rgb(255 255 255 / 10%);
+  }
+
+  .glass-panel:hover {
+    background: rgb(255 255 255 / 8%);
+    border-color: rgb(0 255 224 / 30%);
+    box-shadow: 
+      0 8px 32px rgb(0 0 0 / 40%),
+      0 0 20px rgb(0 255 224 / 10%),
+      inset 0 1px 0 rgb(255 255 255 / 20%);
+  }
+
+  /* Holographic Border */
+  .holo-border {
+    position: relative;
+    border: 1px solid transparent;
+    background: linear-gradient(45deg, rgb(255 0 60 / 10%), rgb(0 255 224 / 10%)) border-box;
+    border-radius: 12px;
+  }
+
+  .holo-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    background: linear-gradient(45deg, #ff003c, #00ffe0, #ff003c);
+    border-radius: inherit;
+    opacity: 30%;
+  }
+
+  /* Scan Line Animation */
+  .scan-line {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ffe0, transparent);
+    animation: scan 2s linear infinite;
+  }
+
+  @keyframes scan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* Pulse Animation */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-glow {
+    from {
+      box-shadow: 0 0 5px rgb(0 255 224 / 20%);
+    }
+
+    to {
+      box-shadow: 0 0 20px rgb(0 255 224 / 60%), 0 0 30px rgb(0 255 224 / 40%);
+    }
+  }
+
+  /* Hologram Effect */
+  .hologram {
+    background: linear-gradient(
+      45deg,
+      rgb(0 255 224 / 10%) 0%,
+      rgb(255 0 60 / 10%) 25%,
+      rgb(0 255 224 / 10%) 50%,
+      rgb(255 0 60 / 10%) 75%,
+      rgb(0 255 224 / 10%) 100%
+    );
+    background-size: 200% 200%;
+    animation: hologram 3s ease-in-out infinite;
+  }
+
+  @keyframes hologram {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Space Station Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(255 255 255 / 5%);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #ff003c, #00ffe0);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #ff003c, #00ffe0);
+    box-shadow: 0 0 10px rgb(0 255 224 / 50%);
   }
 }
